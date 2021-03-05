@@ -7,7 +7,7 @@ from django.contrib.auth.models import (
 class UsuarioManager(BaseUserManager):
 
     def create_user(self, email, password=None):
-        usuario = self.model(email= self.normalize_email(email))
+        usuario = self.model(email=self.normalize_email(email))
 
         usuario.is_active = True
         usuario.is_staff = False
@@ -40,7 +40,7 @@ class Usuario(AbstractBaseUser, PermissionsMixin):
 
     USERNAME_FIELD = "email"
 
-    objects = UsuarioManager
+    objects = UsuarioManager()
 
     def __str__(self):
         return self.email
